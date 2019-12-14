@@ -10,7 +10,8 @@ platform = os.environ['PLATFORM']
 path = os.environ['PATH']
 image = os.environ['APPVEYOR_BUILD_WORKER_IMAGE']
 jobid = os.environ['APPVEYOR_JOB_ID']
-cmake_command = ['cmake', '-DFMT_PEDANTIC=ON', '-DCMAKE_BUILD_TYPE=' + config, '..']
+shared = os.environ['SHARED']
+cmake_command = ['cmake', '-DFMT_PEDANTIC=ON', '-DCMAKE_BUILD_TYPE=' + config, '-DBUILD_SHARED_LIBS=' + shared, '..']
 if build == 'mingw':
     cmake_command.append('-GMinGW Makefiles')
     build_command = ['mingw32-make', '-j4']

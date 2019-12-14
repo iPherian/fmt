@@ -17,13 +17,9 @@ environment:
   CTEST_OUTPUT_ON_FAILURE: 1
   MSVC_DEFAULT_OPTIONS: ON
   BUILD: msvc
-
-matrix:
-  exclude:
-    - image: Visual Studio 2015
-      platform: Win32
-    - image: Visual Studio 2019
-      platform: Win32
+  matrix:
+    - SHARED: "ON"
+    - SHARED: "OFF"
 
 before_build:
  - mkdir build
